@@ -1,0 +1,3 @@
+[submodule "Personal-labs/fileserver"]
+	path = Personal-labs/fileserver
+	url = http://192.168.1.181/BaptisteRabouin/fileserver.git
