@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+  registry:
+    ports:
+      - 5000:5000
+    restart: always
+    container_name: registry
+    image: registry:2
+    networks:
+      - eazy
+    environment:
+      REGISTRY_STORAGE_DELETE_ENABLED: "true"
+      
+      
+  webui-registry:
+    ports:
+      - 8090:80
+    networks:
+      - eazy
+    container_name: webui-registry
+    image: joxit/docker-registry-ui:main
+    environment:
+      REGISTRY_URL: "http://registry:5000"
+      DELETE_IMAGES: "true"
+      REGISTRY_TITLE: eazytraining
+      REGISTRY_HTTP_HEADERS_Access-Control-Origin: '[http://webui-registry:8090]'
+
+networks:
+  eazy:
+    driver: bridge
+

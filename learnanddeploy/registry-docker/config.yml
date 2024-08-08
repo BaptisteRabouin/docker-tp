@@ -1,0 +1,17 @@
+version: 0.1
+log:
+  fields:
+    service: registry
+http:
+  addr: :5000
+  headers:
+    Access-Control-Allow-Origin: ['*']
+    Access-Control-Allow-Credentials: [false]
+    Access-Control-Allow-Headers: ['Authorization', 'Accept', 'Cache-Control']
+    Access-Control-Allow-Methods: ['HEAD', 'GET', 'OPTIONS']
+storage:
+  filesystem:
+    rootdirectory: /var/lib/registry
+health:
+  storagedriver:
+    enabled: true
